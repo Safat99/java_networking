@@ -17,6 +17,7 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
+        System.out.println(name + " started...");
         int i = 0;
         while (true) {
             try {
@@ -24,9 +25,9 @@ public class Producer implements Runnable {
                     System.out.println(name + ": Queue is full...");
                     Thread.sleep(2000);
                 }
-                q.put("cake" + i);
-                System.out.println(name + " created cake" + (i + 1));
                 i++;
+                q.put("cake" + i);
+                System.out.println(name + " created cake" + i);
                 Thread.sleep(300);
 
             } catch (InterruptedException e) {

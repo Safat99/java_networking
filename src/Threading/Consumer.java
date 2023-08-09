@@ -18,22 +18,18 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        int i = 0;
+        System.out.println(name + " started...");
         while (true) {
             try {
-                if (q.size() >= 4) {
-                    System.out.println(name + ": Queue is full...");
+                if (q.isEmpty()) {
+                    System.out.println(name + ": Queue is empty...");
                     Thread.sleep(2000);
                 }
-                q.put("cake" + i);
-                System.out.println(name + " created cake" + (i + 1));
-                i++;
-                Thread.sleep(300);
-
+                System.out.println(name + " got " + q.take());
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
 }
