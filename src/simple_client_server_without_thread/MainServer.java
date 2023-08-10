@@ -6,14 +6,15 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+public class MainServer {
+    public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(22222);
         System.out.println("Server started");
 
         while (true) {
             Socket socket = serverSocket.accept();
             System.out.println("Client connected");
+
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 

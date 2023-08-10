@@ -1,5 +1,4 @@
-package simple_client_server_without_thread;
-
+package simple_client_server_using_threading;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -14,20 +13,22 @@ public class Client {
 
         ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
         ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+        while (true) {
+            Scanner sc = new Scanner(System.in);
 
-        Scanner sc = new Scanner(System.in);
+            String message = sc.nextLine();
 
-        String message = sc.nextLine();
-        // sent to server..
-        oos.writeObject(message);
-
-        try {
-            Object fromServer = ois.readObject();
-            System.out.println("From server: " + (String)fromServer);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            if (message.equals("exit"))
+                break;
+            // sent to server..
+            oos.writeObject(message);
+            try {
+                Object fromServer = ois.readObject();
+                System.out.println("From server: " + (String) fromServer);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-
-
+        socket.close();
     }
 }
