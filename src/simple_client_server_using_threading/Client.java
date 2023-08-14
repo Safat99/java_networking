@@ -22,6 +22,8 @@ public class Client {
                 break;
             // sent to server..
             oos.writeObject(message);
+
+            // read from the server
             try {
                 Object fromServer = ois.readObject();
                 System.out.println("From server: " + (String) fromServer);
