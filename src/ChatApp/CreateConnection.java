@@ -20,6 +20,6 @@ public class CreateConnection implements Runnable{
 
         clientList.put(username, new Information(username, nc));
         System.out.println("HashMap updated" + clientList);
-        new Thread(new ReaderWriter(username, nc, clientList)).start();
+        new Thread(new ReaderWriterServer(username, nc, clientList)).start();
     }
 }
