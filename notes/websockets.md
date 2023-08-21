@@ -39,9 +39,7 @@ WebSockets follows the following format:
 
 ![pic](websocket_flow.png)
  
-<div style="text-align: center;">
-    <strong>Figure:</strong> WebSocket's working mechanism
-</div>
+----------------- **Figure:** WebSocket's working mechanism -----------
 
 
  
